@@ -1,0 +1,19 @@
+{
+  "presets": ["next/babel"], //next/babel next内置的模块，脚手架自带无需安装
+  "plugins": [
+      // @babel/plugin-proposal-decorators 这个插件,同时启用装饰器
+      [
+          "@babel/plugin-proposal-decorators",
+          {
+              "legacy": true
+          }
+      ],
+      [
+          "import",
+          {
+              "libraryName": "antd",
+              "style": true //这个改成ture，就可以使用less编译了，同时也能更改主题
+          }
+      ]
+  ]
+}
