@@ -7,7 +7,7 @@
                 "COMON_VARIABLE": "true"
             },
             "env_production": {
-                "NODE_ENV": "env", //env
+                "NODE_ENV": "production", //env
                 "HOST": "localhost"
             }
         }
