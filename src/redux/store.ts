@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import Immutable from 'immutable'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'

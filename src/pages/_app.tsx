@@ -3,8 +3,13 @@ import React from 'react'
 import withReduxStore from 'lib/with-redux-store' //高阶组件
 import { Provider } from 'react-redux'
 
+interface AppProps {
+    reduxStore: any
+    origGetInitialProps: any
+}
+
 // @withReduxStore
-class MyApp extends App {
+class MyApp extends App<AppProps> {
     render() {
         const { Component, pageProps, reduxStore } = this.props
         return (
