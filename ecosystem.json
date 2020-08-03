@@ -16,12 +16,12 @@
         // 最后这样使用 pm2 deploy ecosystem.json production
         "production": {
             "user": "root", // 服务器用户名
-            "host": ['121.199.11.10'], //服务器ip地址 可写多个
+            "host": ["121.199.11.10"], //服务器ip地址 可写多个
             "ref": "origin/master", //从指定分支拉取代码
             "repo": "git@github.com:tulaoda/nextjs-with-typescript-eslint-jest.git",
             "path": "/www/wwwroot/nextjs", //上传本地目录到服务器
             "ssh_options": "StrictHostKeyChecking=no",
-            "post-deploy": "npm install --registry=https://registry.npm.taobao.org && npm install && pm2 startOrRestart ecosystem.json --env production", //部署脚本
+            "post-deploy": "npm install --registry=https://registry.npm.taobao.org && npm install && && npm run build && pm2 startOrRestart ecosystem.json --env production", //部署脚本
             "env": {
                 "NODE_ENV": "production"
             }
