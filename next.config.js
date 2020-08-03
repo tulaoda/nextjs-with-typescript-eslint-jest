@@ -1,17 +1,20 @@
 const path = require('path')
+const fs = require('fs')
 const withCss = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
-// const withLess = require('@zeit/next-less') //需要使用less不实用scss的大佬,把withSass替换成withSass即可,如果都需要就都引入
 const withPlugins = require('next-compose-plugins') //结合sass css
-// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const withAntd = require('./next-antd.config')
+const lessToJS = require('less-vars-to-js')
 
-const isProd = process.env.NODE_ENV === 'production'
-
-function HACK_removeMinimizeOptionFromCssLoaders(config) {
-    console.warn(
-        'HACK: Removing `minimize` option from `css-loader` entries in Webpack config'
+// Where your antd-custom.less file lives
+const themeVariables = lessToJS(
+    fs.readFileSync(
+        path.resolve(__dirname, './src/assets/antd-custom.less'),
+        'utf8'
     )
+)
+
+function RemoveMinimizeOptionFromCssLoaders(config) {
     config.module.rules.forEach((rule) => {
         if (Array.isArray(rule.use)) {
             rule.use.forEach((u) => {
@@ -23,16 +26,21 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
     })
 }
 
+// const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig = {
-    assetPrefix: isProd ? 'https://blog.wipi.tech/ramiko/' : '/',
+    assetPrefix: '/',
     // experimental: {
     //     basePath: isProd ? '' : '/api',
     // },
     webpack: (config) => {
-        HACK_removeMinimizeOptionFromCssLoaders(config)
+        RemoveMinimizeOptionFromCssLoaders(config)
         return config
     },
     distDir: 'dist',
+    typescript: {
+        ignoreBuildErrors: true,
+    },
 }
 
 module.exports = withPlugins(
@@ -58,8 +66,8 @@ module.exports = withPlugins(
                 lessLoaderOptions: {
                     lessOptions: {
                         javascriptEnabled: true,
+                        modifyVars: themeVariables,
                     },
-                    // modifyVars: antdVariables
                 },
             },
         ],

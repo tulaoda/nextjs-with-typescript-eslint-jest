@@ -19,7 +19,7 @@ function getOrCreateStore(initialState?: any): any {
     return window[__NEXT_REDUX_STORE__] //最终返回这个对象的key为__NEXT_REDUX_STORE__的值，也就是初始化的整个store
 }
 
-export default (App) => {
+const Connect = (App) => {
     //App为传入的组件
     return class AppWithRedux extends React.PureComponent<{}, {}> {
         public static async getInitialProps(appContext) {
@@ -53,3 +53,5 @@ export default (App) => {
         }
     }
 }
+
+export default Connect
