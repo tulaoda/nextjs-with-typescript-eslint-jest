@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development PORT=3000 node server.js",
     "prod": "cross-env NODE_ENV=production PORT=4000 node server.js",
     "prebuild": "rimraf dist",
-    "build": "next build",
+    "build": "mkdir dist && next build",
     "postbuild": "node ./build/copy-files",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
@@ -29,7 +29,6 @@
     ]
   },
   "dependencies": {
-    "@types/react": "^16.9.27",
     "@babel/plugin-proposal-decorators": "^7.10.4",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
@@ -52,11 +51,11 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "less-vars-to-js": "^1.3.0",
-    "typescript": "^3.8.3"
+    "less-vars-to-js": "^1.3.0"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.1",
+    "@types/react": "^16.9.27",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/testing-library__react": "^10.0.0",
@@ -73,6 +72,7 @@
     "less-loader": "^6.1.3",
     "lint-staged": "^10.0.10",
     "null-loader": "^4.0.0",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.2",
+    "typescript": "^3.8.3"
   }
 }
