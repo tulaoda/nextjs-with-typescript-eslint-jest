@@ -5,6 +5,7 @@ const withSass = require('@zeit/next-sass')
 const withPlugins = require('next-compose-plugins') //结合sass css
 const withAntd = require('./next-antd.config')
 const lessToJS = require('less-vars-to-js')
+const childProcess = require('child_process')
 
 // Where your antd-custom.less file lives
 const themeVariables = lessToJS(
@@ -26,7 +27,7 @@ function RemoveMinimizeOptionFromCssLoaders(config) {
     })
 }
 
-// const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
     assetPrefix: '/',
@@ -35,9 +36,31 @@ const nextConfig = {
     // },
     webpack: (config) => {
         RemoveMinimizeOptionFromCssLoaders(config)
+        if (isProd) {
+            // 生成提交日志
+            // %H提交对象（commit）的完整哈希字串  %ad作者修订日期（可以用 --date= 选项定制格式）
+            isProd &&
+                childProcess.exec(
+                    'git log --pretty="%H - %ad" --date=iso-local --since="2020-01-01"',
+                    function (error, stdout) {
+                        if (!error) {
+                            const DIST_PATH = path.resolve(__dirname, './.next')
+                            fs.appendFileSync(
+                                `${DIST_PATH}/web-commit.log`,
+                                '',
+                                'utf-8'
+                            )
+                            fs.writeFileSync(
+                                `${DIST_PATH}/web-commit.log`,
+                                stdout,
+                                'utf-8'
+                            )
+                        }
+                    }
+                )
+        }
         return config
     },
-    distDir: 'dist',
     typescript: {
         ignoreBuildErrors: true,
     },
