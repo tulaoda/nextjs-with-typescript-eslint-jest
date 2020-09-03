@@ -1,4 +1,4 @@
-it import React from 'react'
+import React from 'react'
 export const Nav31DataSource = {
     wrapper: { className: 'header3 home-page-wrapper kemxawjwga-editor_css' },
     page: { className: 'home-page' },
