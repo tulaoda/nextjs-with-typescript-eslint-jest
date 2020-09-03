@@ -10,6 +10,7 @@
     "build": "mkdir dist && next build",
     "postbuild": "node ./build/copy-files",
     "start": "next start",
+    "deploy": "pm2 deploy ecosystem.json production",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write **/*.{js,ts,tsx}",
     "lint": "eslint . --ext ts --ext tsx --ext js",
