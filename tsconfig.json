@@ -26,7 +26,8 @@
             "layout/*": ["layout/*"],
             "theme/*": ["theme/*"],
             "utils/*": ["utils/*"],
-            "views/*": ["views/*"],
+            "assets/*": ["assets/*"],
+            "css/*": ["css/*"],
             "lib/*": ["lib/*"]
         }
     },

@@ -47,7 +47,9 @@
     "less-vars-to-js": "^1.3.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
+    "nprogress": "^0.2.0",
     "null-loader": "^4.0.0",
+    "postcss-px2rem-exclude": "0.0.6",
     "rc-banner-anim": "^2.4.4",
     "rc-queue-anim": "^1.8.5",
     "rc-scroll-anim": "^2.7.4",
@@ -67,6 +69,7 @@
     "@types/testing-library__react": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
+    "autoprefixer": "^9.8.6",
     "babel-jest": "^25.2.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
@@ -75,6 +78,8 @@
     "jest": "^25.2.3",
     "jest-watch-typeahead": "^0.5.0",
     "lint-staged": "^10.0.10",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-pxtorem": "^5.1.1",
     "prettier": "^2.0.2"
   }
 }

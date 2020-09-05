@@ -3,21 +3,19 @@
 import React from 'react';
 import { enquireScreen } from 'enquire-js';
 
-import Nav3 from './Nav3';
-import Banner1 from './Banner1';
-import Feature7 from './Feature7';
-import Feature0 from './Feature0';
-import Footer1 from './Footer1';
-
+import Nav from 'components/header';
+import Banner from 'components/banner';
+import Footer from 'components/footer';
+// import Feature7 from './Feature7';
+// import Feature0 from './Feature0';
 import {
-  Nav30DataSource,
   Nav31DataSource,
   Banner10DataSource,
-  Feature70DataSource,
-  Feature00DataSource,
+  // Feature70DataSource,
+  // Feature00DataSource,
   Footer10DataSource,
 } from '../../api/data.source';
-import './less/antMotionStyle.less';
+// import './less/antMotionStyle.less';
 
 let isMobile;
 enquireScreen((b) => {
@@ -55,31 +53,31 @@ export default class Home extends React.Component {
 
   render() {
     const children = [
-      <Nav3
+      <Nav
         id="Nav3_1"
         key="Nav3_1"
         dataSource={Nav31DataSource}
         isMobile={this.state.isMobile}
       />,
-      <Banner1
+      <Banner
         id="Banner1_0"
         key="Banner1_0"
         dataSource={Banner10DataSource}
         isMobile={this.state.isMobile}
       />,
-      <Feature7
-        id="Feature7_0"
-        key="Feature7_0"
-        dataSource={Feature70DataSource}
-        isMobile={this.state.isMobile}
-      />,
-      <Feature0
-        id="Feature0_0"
-        key="Feature0_0"
-        dataSource={Feature00DataSource}
-        isMobile={this.state.isMobile}
-      />,
-      <Footer1
+      // <Feature7
+      //   id="Feature7_0"
+      //   key="Feature7_0"
+      //   dataSource={Feature70DataSource}
+      //   isMobile={this.state.isMobile}
+      // />,
+      // <Feature0
+      //   id="Feature0_0"
+      //   key="Feature0_0"
+      //   dataSource={Feature00DataSource}
+      //   isMobile={this.state.isMobile}
+      // />,
+      <Footer
         id="Footer1_0"
         key="Footer1_0"
         dataSource={Footer10DataSource}

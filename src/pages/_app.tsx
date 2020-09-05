@@ -1,15 +1,17 @@
-import App from 'next/app'
+import App, { AppProps } from 'next/app'
 import React from 'react'
 import withReduxStore from 'lib/with-redux-store' //高阶组件
 import { Provider } from 'react-redux'
+import { withRouter } from 'next/router'
+import 'css/index.less'
 
-interface AppProps {
+interface AppProp extends AppProps {
     reduxStore: any
-    origGetInitialProps: any
 }
 
 // @withReduxStore
-class MyApp extends App<AppProps> {
+class MyApp extends App<AppProp> {
+
     render() {
         const { Component, pageProps, reduxStore } = this.props
         return (
@@ -20,4 +22,4 @@ class MyApp extends App<AppProps> {
     }
 }
 
-export default withReduxStore(MyApp)
+export default withReduxStore(withRouter(MyApp))

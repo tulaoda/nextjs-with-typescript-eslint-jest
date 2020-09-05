@@ -2,7 +2,7 @@ import React from 'react';
 import TweenOne from 'rc-tween-one';
 import { Menu } from 'antd';
 import { getChildrenToRender } from 'utils/helper';
-
+import './less/index.less'
 const { Item, SubMenu } = Menu;
 
 class Header3 extends React.Component {
