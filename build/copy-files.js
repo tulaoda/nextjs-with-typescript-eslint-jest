@@ -73,7 +73,7 @@ const copyFile = () => {
                 path.join(__dirname, '../dist', filename)
             )
         )
-        console.log('拷贝完成!')
+        console.log(`${filename}拷贝完成!`)
     })
 }
 
