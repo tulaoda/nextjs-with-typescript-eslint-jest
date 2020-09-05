@@ -15,21 +15,25 @@ import {
     // Feature00DataSource,
     Footer10DataSource,
 } from 'api/data.source'
-// import './less/antMotionStyle.less';
+import { setRem } from 'lib/rem.ts'
 
 let isMobile
 enquireScreen((b) => {
     isMobile = b
 })
 
-const { location = {} } = typeof window !== 'undefined' ? window : {}
+interface IProps {}
 
-export default class Home extends React.Component {
+interface IState {
+    isMobile: boolean
+}
+
+export default class Home extends React.PureComponent<IProps, IState> {
+    dom: HTMLDivElement
     constructor(props) {
         super(props)
         this.state = {
             isMobile,
-            show: !location.port, // 如果不是 dva 2.0 请删除
         }
     }
 
@@ -37,33 +41,30 @@ export default class Home extends React.Component {
         // 适配手机屏幕;
         enquireScreen((b) => {
             this.setState({ isMobile: !!b })
+            if (!!b) {
+                setRem()
+                // 改变窗口大小时重新设置 rem
+                window.onresize = function () {
+                    setRem()
+                }
+            }
         })
-        // dva 2.0 样式在组件渲染之后动态加载，导致滚动组件不生效；线上不影响；
-        /* 如果不是 dva 2.0 请删除 start */
-        if (location.port) {
-            // 样式 build 时间在 200-300ms 之间;
-            setTimeout(() => {
-                this.setState({
-                    show: true,
-                })
-            }, 500)
-        }
-        /* 如果不是 dva 2.0 请删除 end */
     }
 
     render() {
+        const { isMobile } = this.state
         const children = [
             <Nav
                 id="Nav3_1"
                 key="Nav3_1"
                 dataSource={Nav31DataSource}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
             />,
             <Banner
                 id="Banner1_0"
                 key="Banner1_0"
                 dataSource={Banner10DataSource}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
             />,
             // <Feature7
             //   id="Feature7_0"
@@ -81,7 +82,7 @@ export default class Home extends React.Component {
                 id="Footer1_0"
                 key="Footer1_0"
                 dataSource={Footer10DataSource}
-                isMobile={this.state.isMobile}
+                isMobile={isMobile}
             />,
         ]
         return (
@@ -91,9 +92,7 @@ export default class Home extends React.Component {
                     this.dom = d
                 }}
             >
-                {/* 如果不是 dva 2.0 替换成 {children} start */}
-                {this.state.show && children}
-                {/* 如果不是 dva 2.0 替换成 {children} end */}
+                {children}
             </div>
         )
     }
