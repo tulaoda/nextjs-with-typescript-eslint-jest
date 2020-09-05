@@ -1,17 +1,30 @@
 module.exports = {
-  roots: ['<rootDir>'],
-  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
-  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
-  transform: {
-    '^.+\\.(ts|tsx)$': 'babel-jest',
-  },
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
-  moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
-  },
+    roots: ['<rootDir>'],
+    moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
+    testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+    transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+    transform: {
+        '^.+\\.(ts|tsx)$': 'babel-jest',
+    },
+    watchPlugins: [
+        'jest-watch-typeahead/filename',
+        'jest-watch-typeahead/testname',
+    ],
+    moduleNameMapper: {
+        '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+        '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+        "lib(.*)$": "<rootDir>/src/lib/$1",
+        '@/*': '<rootDir>/src/*',
+        'api/*': '<rootDir>/src/api/*',
+        'components/*': '<rootDir>/src/components/*',
+        'plugins/*': '<rootDir>/src/plugins/*',
+        'config/*': '<rootDir>/src/config/*',
+        'constants/*': '<rootDir>/src/constants/*',
+        'hooks/*': '<rootDir>/src/hooks/*',
+        'layout/*': '<rootDir>/src/layout/*',
+        'theme/*': '<rootDir>/src/theme/*',
+        'utils/*': '<rootDir>/src/utils/*',
+        'assets/*': '<rootDir>/src/assets/*',
+        'css/*': '<rootDir>/src/css/*',
+    },
 }
