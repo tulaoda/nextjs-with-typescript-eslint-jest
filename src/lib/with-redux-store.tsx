@@ -1,5 +1,5 @@
 import React from 'react'
-import { initializeStore } from '../redux/store' //引入初始化的store
+import { initializeStore } from '../store/store' //引入初始化的store
 
 const isServer: boolean = typeof window === 'undefined' //判断一下window在不在
 const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__' //定一个常量用来对象存储的key名

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Button, Input, List } from 'antd'
 import { connect } from 'react-redux'
-import { addTodo, asyncAddToDo } from '../redux/actions'
+import { addTodo, asyncAddToDo } from '../store/actions'
 
 const { Item } = List
 
